@@ -1,13 +1,17 @@
 import hashlib
 
-
-def calculate_hash(file_path):
+def calculate_hash(file):
 
     sha256 = hashlib.sha256()
 
-    with open(file_path, "rb") as file:
+    while True:
+        chunk = file.read(4096)
 
-        while chunk := file.read(4096):
-            sha256.update(chunk)
+        if not chunk:
+            break
+
+        sha256.update(chunk)
+
+    file.seek(0)
 
     return sha256.hexdigest()
