@@ -7,37 +7,40 @@
 
 <h1>Local Crypto Tool</h1>
 
+<hr>
+
 <h2>AES-256 Encryption / Decryption</h2>
 
 <form method="POST">
 
-<textarea
-name="text"
-rows="10"
-cols="80"></textarea>
+    <textarea
+        name="text"
+        rows="10"
+        cols="80"
+        placeholder="Enter text or encrypted data"></textarea>
 
-<br><br>
+    <br><br>
 
-<input
-type="password"
-name="password"
-placeholder="Password">
+    <input
+        type="password"
+        name="password"
+        placeholder="Password">
 
-<br><br>
+    <br><br>
 
-<button name="action" value="encrypt">
-Encrypt
-</button>
+    <button name="action" value="encrypt">
+        Encrypt
+    </button>
 
-<button name="action" value="decrypt">
-Decrypt
-</button>
+    <button name="action" value="decrypt">
+        Decrypt
+    </button>
 
 </form>
 
 <h3>Result</h3>
 
-<textarea rows="10" cols="80">{{ result }}</textarea>
+<textarea rows="10" cols="80" readonly>{{ result }}</textarea>
 
 <hr>
 
@@ -45,19 +48,55 @@ Decrypt
 
 <form method="POST" enctype="multipart/form-data">
 
-<input type="file" name="file">
+    <input type="file" name="file">
 
-<br><br>
+    <br><br>
 
-<button name="action" value="hash">
-Generate SHA-256
-</button>
+    <button name="action" value="hash">
+        Generate SHA-256
+    </button>
 
 </form>
 
 <h3>SHA-256 Hash</h3>
 
-<textarea rows="5" cols="80">{{ file_hash }}</textarea>
+<textarea rows="5" cols="80" readonly>{{ file_hash }}</textarea>
+
+<hr>
+
+<h2>File Integrity Verification</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Select File:</label>
+
+    <br><br>
+
+    <input type="file" name="verify_file">
+
+    <br><br>
+
+    <label>Expected SHA-256 Hash:</label>
+
+    <br><br>
+
+    <input
+        type="text"
+        name="expected_hash"
+        placeholder="Paste expected SHA-256 hash here"
+        size="80">
+
+    <br><br>
+
+    <button name="action" value="verify">
+        Verify Integrity
+    </button>
+
+</form>
+
+<h3>Verification Result</h3>
+
+<textarea rows="3" cols="80" readonly>{{ verification_result }}</textarea>
 
 </body>
 </html>
