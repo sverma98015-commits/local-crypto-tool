@@ -1,102 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Local Crypto Tool</title>
+<meta charset="UTF-8">
+<title>Local Crypto Tool</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #000000);
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glass container */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ffcc;
+    letter-spacing: 2px;
+}
+
+/* Section headers */
+h2 {
+    color: #38bdf8;
+    margin-top: 25px;
+}
+
+/* Inputs */
+textarea, input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Buttons */
+button {
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00ffcc, #38bdf8);
+    color: black;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Output box */
+textarea[readonly] {
+    background: rgba(0,0,0,0.5);
+    color: #00ffcc;
+}
+
+/* Divider */
+hr {
+    border: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 25px 0;
+}
+</style>
+
 </head>
+
 <body>
 
-<h1>Local Crypto Tool</h1>
+<div class="container">
 
-<hr>
+<h1>🔐 Local Crypto Tool</h1>
 
+<!-- AES -->
 <h2>AES-256 Encryption / Decryption</h2>
 
 <form method="POST">
 
-    <textarea
-        name="text"
-        rows="10"
-        cols="80"
-        placeholder="Enter text or encrypted data"></textarea>
+<textarea name="text" rows="6" placeholder="Enter text or encrypted data"></textarea>
 
-    <br><br>
+<input type="password" name="password" placeholder="Enter password">
 
-    <input
-        type="password"
-        name="password"
-        placeholder="Password">
-
-    <br><br>
-
-    <button name="action" value="encrypt">
-        Encrypt
-    </button>
-
-    <button name="action" value="decrypt">
-        Decrypt
-    </button>
+<button name="action" value="encrypt">Encrypt</button>
+<button name="action" value="decrypt">Decrypt</button>
 
 </form>
 
-<h3>Result</h3>
-
-<textarea rows="10" cols="80" readonly>{{ result }}</textarea>
+<textarea readonly rows="6">{{ result }}</textarea>
 
 <hr>
 
+<!-- HASH -->
 <h2>SHA-256 File Hash Generator</h2>
 
 <form method="POST" enctype="multipart/form-data">
 
-    <input type="file" name="file">
+<input type="file" name="file">
 
-    <br><br>
-
-    <button name="action" value="hash">
-        Generate SHA-256
-    </button>
+<button name="action" value="hash">Generate Hash</button>
 
 </form>
 
-<h3>SHA-256 Hash</h3>
-
-<textarea rows="5" cols="80" readonly>{{ file_hash }}</textarea>
+<textarea readonly rows="4">{{ file_hash }}</textarea>
 
 <hr>
 
-<h2>File Integrity Verification</h2>
+<!-- VERIFY -->
+<h2>Integrity Verification</h2>
 
 <form method="POST" enctype="multipart/form-data">
 
-    <label>Select File:</label>
+<input type="file" name="verify_file">
 
-    <br><br>
+<input type="text" name="expected_hash" placeholder="Paste expected SHA-256">
 
-    <input type="file" name="verify_file">
-
-    <br><br>
-
-    <label>Expected SHA-256 Hash:</label>
-
-    <br><br>
-
-    <input
-        type="text"
-        name="expected_hash"
-        placeholder="Paste expected SHA-256 hash here"
-        size="80">
-
-    <br><br>
-
-    <button name="action" value="verify">
-        Verify Integrity
-    </button>
+<button name="action" value="verify">Verify</button>
 
 </form>
 
-<h3>Verification Result</h3>
+<textarea readonly rows="3">{{ verification_result }}</textarea>
 
-<textarea rows="3" cols="80" readonly>{{ verification_result }}</textarea>
+</div>
 
 </body>
 </html>
