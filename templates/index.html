@@ -7,6 +7,8 @@
 
 <h1>Local Crypto Tool</h1>
 
+<h2>AES-256 Encryption / Decryption</h2>
+
 <form method="POST">
 
 <textarea
@@ -23,15 +25,11 @@ placeholder="Password">
 
 <br><br>
 
-<button
-name="action"
-value="encrypt">
+<button name="action" value="encrypt">
 Encrypt
 </button>
 
-<button
-name="action"
-value="decrypt">
+<button name="action" value="decrypt">
 Decrypt
 </button>
 
@@ -40,6 +38,26 @@ Decrypt
 <h3>Result</h3>
 
 <textarea rows="10" cols="80">{{ result }}</textarea>
+
+<hr>
+
+<h2>SHA-256 File Hash Generator</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="file" name="file">
+
+<br><br>
+
+<button name="action" value="hash">
+Generate SHA-256
+</button>
+
+</form>
+
+<h3>SHA-256 Hash</h3>
+
+<textarea rows="5" cols="80">{{ file_hash }}</textarea>
 
 </body>
 </html>
