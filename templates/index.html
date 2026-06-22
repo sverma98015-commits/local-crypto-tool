@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Crypto Tool</title>
+</head>
+<body>
+
+<h1>Local Crypto Tool</h1>
+
+<form method="POST">
+
+<textarea
+name="text"
+rows="10"
+cols="80"></textarea>
+
+<br><br>
+
+<input
+type="password"
+name="password"
+placeholder="Password">
+
+<br><br>
+
+<button
+name="action"
+value="encrypt">
+Encrypt
+</button>
+
+<button
+name="action"
+value="decrypt">
+Decrypt
+</button>
+
+</form>
+
+<h3>Result</h3>
+
+<textarea rows="10" cols="80">{{ result }}</textarea>
+
+</body>
+</html>
