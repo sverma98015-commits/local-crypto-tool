@@ -2,8 +2,7 @@
 
 A security-focused desktop application developed in Python for secure text protection, cryptographic integrity verification, and local file authentication. The application leverages industry-standard cryptographic primitives from the Python Cryptography ecosystem to provide robust encryption, decryption, and hash-based verification capabilities while adhering to modern security best practices.
 
-![Full Application Layout](screenshots/FULL.JPG)
-
+![Full Layout](FULL.JPG)
 ---
 
 ##  Key Features
@@ -15,8 +14,8 @@ A security-focused desktop application developed in Python for secure text prote
 * Derives encryption keys from user-supplied passphrases using secure password-based key derivation techniques.
 * Supports secure encryption and decryption of sensitive textual data.
 * Prevents key reuse and eliminates hardcoded cryptographic secrets.
-* ![Encryption Module](screenshots/A.jpg)
-  ![Decryption Module](screenshots/B.jpg)
+*![Encryption](A.JPG)
+![Decryption](B.JPG)
 
 ###  Secure Key Derivation & Salting
 
@@ -30,14 +29,15 @@ A security-focused desktop application developed in Python for secure text prote
 * Generates unique digital fingerprints for integrity validation.
 * Enables quick verification of downloaded files, backups, and critical documents.
 
-* ![Hash Generator](screenshots/C.JPG)
+![Hash Generator](C.JPG)
 
 ### File Integrity Verification
 
 * Compares computed SHA-256 hashes against trusted reference values.
 * Detects unauthorized file modification, corruption, or tampering.
 * Provides clear verification results for security auditing and file validation workflows.
-* ![Integrity Verification](screenshots/F.JPG)
+
+![Verification](F.JPG)
 
 ###  Modern Glassmorphic User Interface
 
