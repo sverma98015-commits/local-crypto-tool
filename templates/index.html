@@ -1,102 +1,130 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Local Crypto Tool</title>
+    <title>Cyber Crypto Tool</title>
+
+    <style>
+        body {
+            background-color: #0b0f14;
+            color: #00ff9d;
+            font-family: monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff9d;
+        }
+
+        .box {
+            border: 1px solid #00ff9d;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #111823;
+        }
+
+        textarea, input {
+            width: 100%;
+            background: black;
+            color: #00ff9d;
+            border: 1px solid #00ff9d;
+            padding: 10px;
+            font-family: monospace;
+        }
+
+        button {
+            background: #00ff9d;
+            color: black;
+            padding: 10px;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #00cc7a;
+        }
+
+        .title {
+            color: #00ff9d;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>Local Crypto Tool</h1>
+<h1>🔐 CYBER CRYPTO TOOL</h1>
 
-<hr>
+<!-- ENCRYPT / DECRYPT -->
+<div class="box">
 
-<h2>AES-256 Encryption / Decryption</h2>
+    <div class="title">AES-256 Encryption / Decryption</div>
 
-<form method="POST">
+    <form method="POST">
 
-    <textarea
-        name="text"
-        rows="10"
-        cols="80"
-        placeholder="Enter text or encrypted data"></textarea>
+        <textarea name="text" rows="6" placeholder="Enter text or encrypted data"></textarea>
 
-    <br><br>
+        <br><br>
 
-    <input
-        type="password"
-        name="password"
-        placeholder="Password">
+        <input type="password" name="password" placeholder="Enter password">
 
-    <br><br>
+        <button name="action" value="encrypt">ENCRYPT</button>
+        <button name="action" value="decrypt">DECRYPT</button>
 
-    <button name="action" value="encrypt">
-        Encrypt
-    </button>
+    </form>
 
-    <button name="action" value="decrypt">
-        Decrypt
-    </button>
+    <br>
 
-</form>
+    <textarea rows="5" readonly>{{ result }}</textarea>
 
-<h3>Result</h3>
+</div>
 
-<textarea rows="10" cols="80" readonly>{{ result }}</textarea>
+<!-- HASH -->
+<div class="box">
 
-<hr>
+    <div class="title">SHA-256 File Hash Generator</div>
 
-<h2>SHA-256 File Hash Generator</h2>
+    <form method="POST" enctype="multipart/form-data">
 
-<form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
 
-    <input type="file" name="file">
+        <button name="action" value="hash">GENERATE HASH</button>
 
-    <br><br>
+    </form>
 
-    <button name="action" value="hash">
-        Generate SHA-256
-    </button>
+    <br>
 
-</form>
+    <textarea rows="3" readonly>{{ file_hash }}</textarea>
 
-<h3>SHA-256 Hash</h3>
+</div>
 
-<textarea rows="5" cols="80" readonly>{{ file_hash }}</textarea>
+<!-- VERIFY -->
+<div class="box">
 
-<hr>
+    <div class="title">Integrity Verification System</div>
 
-<h2>File Integrity Verification</h2>
+    <form method="POST" enctype="multipart/form-data">
 
-<form method="POST" enctype="multipart/form-data">
+        <input type="file" name="verify_file">
 
-    <label>Select File:</label>
+        <br><br>
 
-    <br><br>
+        <input type="text" name="expected_hash" placeholder="Paste expected SHA-256 hash">
 
-    <input type="file" name="verify_file">
+        <button name="action" value="verify">VERIFY FILE</button>
 
-    <br><br>
+    </form>
 
-    <label>Expected SHA-256 Hash:</label>
+    <br>
 
-    <br><br>
+    <textarea rows="2" readonly>{{ verification_result }}</textarea>
 
-    <input
-        type="text"
-        name="expected_hash"
-        placeholder="Paste expected SHA-256 hash here"
-        size="80">
-
-    <br><br>
-
-    <button name="action" value="verify">
-        Verify Integrity
-    </button>
-
-</form>
-
-<h3>Verification Result</h3>
-
-<textarea rows="3" cols="80" readonly>{{ verification_result }}</textarea>
+</div>
 
 </body>
 </html>
