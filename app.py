@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from crypto.encryptor import encrypt_text
 from crypto.decryptor import decrypt_text
+from integrity.hash_verifier import calculate_hash
 
 app = Flask(__name__)
 
